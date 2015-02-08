@@ -2,6 +2,7 @@ package com.truonghan.backend.domain;
 
 import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
@@ -17,7 +18,7 @@ public class Role {
 	
 	private String name;
 
-	@ManyToMany(mappedBy="roles")
+	@ManyToMany(mappedBy="roles", cascade=CascadeType.ALL)
 	private List<User> users;
 	
 	

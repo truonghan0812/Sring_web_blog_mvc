@@ -21,11 +21,11 @@ public class Blog {
 	
 	private String url;
 	
-	@ManyToOne
+	@ManyToOne(cascade=CascadeType.ALL)
 	@JoinColumn(name="user_id")
 	private User user;
 	
-	@OneToMany(mappedBy="blog", cascade=CascadeType.ALL)
+	@OneToMany(mappedBy="blog",cascade=CascadeType.ALL)
 	private List<Item> items;
 	
 		

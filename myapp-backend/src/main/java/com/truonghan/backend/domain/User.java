@@ -37,7 +37,7 @@ public class User {
 			)
 	private List<Role> roles;
 	
-	@OneToMany(mappedBy="user")
+	@OneToMany(mappedBy="user", cascade=CascadeType.ALL)
 	private List<Blog> blogs;
 	
 	

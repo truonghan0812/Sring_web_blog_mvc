@@ -104,6 +104,22 @@
   		<artifactId>spring-test</artifactId>
   		<version>4.1.4.RELEASE</version>
   	</dependency>
+  	<!-- QueryDSL -->
+  	<dependency>
+  		<groupId>com.mysema.querydsl</groupId>
+  		<artifactId>querydsl-core</artifactId>
+  		<version>3.6.0</version>
+  	</dependency>
+  	<dependency>
+  		<groupId>com.mysema.querydsl</groupId>
+  		<artifactId>querydsl-apt</artifactId>
+  		<version>3.6.0</version>
+  	</dependency>
+  	<dependency>
+  		<groupId>com.mysema.querydsl</groupId>
+  		<artifactId>querydsl-jpa</artifactId>
+  		<version>3.6.0</version>
+  	</dependency>
   	</dependencies>
   </dependencyManagement>
 </project>

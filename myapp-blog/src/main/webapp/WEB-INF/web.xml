@@ -38,4 +38,19 @@
 		<param-name>contextConfigLocation</param-name>
 		<param-value>/WEB-INF/application-context.xml</param-value>
 	</context-param>
+	
+	<!-- Use entity manager out of the DAO layer without lazy loading exception -->
+	<filter>
+		<filter-name>entityManagerInView</filter-name>
+		<filter-class>org.springframework.orm.jpa.support.OpenEntityManagerInViewFilter</filter-class>
+		<init-param>
+			<param-name>entityManagerFactoryBeanName</param-name>
+			<!-- References to back end context emf -->
+			<param-value>entityManagerFactory</param-value>
+		</init-param>
+	</filter>
+	<filter-mapping>
+		<filter-name>entityManagerInView</filter-name>
+		<url-pattern>/*</url-pattern>
+	</filter-mapping>
 </web-app>

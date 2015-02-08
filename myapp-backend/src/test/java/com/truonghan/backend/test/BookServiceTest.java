@@ -7,6 +7,8 @@ import static org.junit.Assert.*;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.persistence.EntityManager;
+import javax.persistence.PersistenceContext;
 import javax.transaction.Transactional;
 
 import org.junit.Test;
@@ -43,7 +45,8 @@ public class BookServiceTest {
 	
 	@Autowired
 	UserService userService;
-	
+	@PersistenceContext
+	EntityManager em;
 //	@Test
 //	public void insertRoleTest(){
 //		
@@ -91,19 +94,31 @@ public class BookServiceTest {
 	
 		@Test
 	public void insertUerTest(){
+			User user_admin = new User();
+			user_admin.setName("admin");
+			
+			User user_user = new User();
+			user_user.setName("user");
+			
 		//Insert blog and blog item
-
+			
 			Blog blog = new Blog();
 			blog.setName("BlogName");
+			blog.setUrl("http://www.ballball.com/en-gb/league/english-barclays-premier-league/latest-news/");
+			blog.setUser(user_admin);
 			
 			List<Item> items = new ArrayList<Item>() ;
 			Item item1 = new Item();
 			item1.setTitle("Title1");
-			itemService.save(item1);
+			item1.setLink("http://www.ballball.com/en-gb/article/62969-arsene-wenger-harry-kane-england/");
+			item1.setBlog(blog);
+			//itemService.save(item1);
 			
 			Item item2 = new Item();
 			item2.setTitle("Title2");
-			itemService.save(item2);
+			item2.setLink("http://www.ballball.com/en-gb/article/62969-arsene-wenger-harry-kane-england/");
+			item2.setBlog(blog);
+			//itemService.save(item2);
 			
 			items.add(item1);
 			items.add(item2);
@@ -111,34 +126,57 @@ public class BookServiceTest {
 			blog.setItems(items);
 			List<Blog> blogs = new ArrayList<Blog>();
 			blogs.add(blog);
-			blogService.save(blog);
+			//blogService.save(blog);
 			//----------------------------------------------------------------
-		User user_admin = new User();
-		user_admin.setName("admin");
 		
+	
 		List<Role> roles= new ArrayList<Role>();
+		List<User> users= new ArrayList<User>();
+		
 		Role role_admin = new Role();
 		role_admin.setName("admin");
+		
 		Role role_user = new Role();
 		role_user.setName("user");
+		
 		roles.add(role_admin);
 		roles.add(role_user);
 		
+		users.add(user_user);
+		users.add(user_admin);
+		
+		//role_user.setUsers(users);
+		//roleService.save(role_user);
 		user_admin.setRoles(roles);
 		user_admin.setBlogs(blogs);
 		userService.save(user_admin);
+		
 		
 		//List<Role> rolesDB = userService.findOne(user_admin.getId()).getRoles();
 		//for (Role role : rolesDB) {
 		//	System.out.println(role.getName());
 	//	}
+		
+		em.refresh(user_admin);
 		List<Blog> blogsDB = userService.findOne(user_admin.getId()).getBlogs();
+		assertEquals(user_admin.getBlogs().size(), blogsDB.size());
 		for (Blog role : blogsDB) {
+			System.out.println("printing role name");
 			System.out.println(role.getName());
 		}
+		
+		
+		em.refresh(blog);
+		Blog dbBlog = blogService.findOne(blog.getId());
+		
+		List<Item> itemsDB = dbBlog.getItems();
+		assertEquals(itemsDB.size(), blog.getItems().size());
+		for (Item item : itemsDB) {
+			System.out.println("printing item name");
+			System.out.println(item.getLink());
+		}
+		
 	}
 	
 }
-
-
 */
