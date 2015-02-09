@@ -1,5 +1,5 @@
 package com.truonghan.web.controller;
-
+"Eclipse Color Theme 
 import org.springframework.beans.factory.annotation.Autowire;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -29,5 +29,8 @@ public class UserController {
 		return "user-detail";
 	}
 	
-	
+	@RequestMapping(value="/register")
+	public String ShowRegister(){
+		return "user-register";
+	}
 }
