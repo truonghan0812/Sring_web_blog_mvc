@@ -1,6 +1,5 @@
 
 /*
-
 package com.truonghan.backend.test;
 import static org.junit.Assert.*;
 
@@ -47,6 +46,7 @@ public class BookServiceTest {
 	UserService userService;
 	@PersistenceContext
 	EntityManager em;
+	
 //	@Test
 //	public void insertRoleTest(){
 //		

@@ -3,6 +3,7 @@ package com.truonghan.backend.services;
 import java.util.List;
 
 import com.truonghan.backend.domain.Blog;
+import com.truonghan.backend.domain.User;
 
 public interface BlogService {
 

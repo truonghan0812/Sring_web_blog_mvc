@@ -9,4 +9,5 @@ public interface UserService {
 	User save (User entity);
 	List<User> findAll();
 	User findOne(int ID);
+	User findOneWithBlogs(int user_id);
 }
