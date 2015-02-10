@@ -32,6 +32,8 @@
             <li class="${current == 'index' ? 'active' : '' }"><a href="<sp:url value='/'/>">Home</a></li>
             <li class="${current == 'users' ? 'active' : '' }"><a href="<sp:url value='/users.html'/>">Users</a></li>
             <li class="${current == 'register' ? 'active' : '' }"><a href="<sp:url value='/register.html'/>">Register</a></li>
+            <li class="${current == 'login' ? 'active' : '' }"><a href="<sp:url value='/login.html'/>">Log In</a></li>
+            <li><a href="<sp:url value='/logout'/>">Log Out</a></li>
             <li><a href="#contact">Contact</a></li>
            </ul>
         </div><!--/.nav-collapse -->
