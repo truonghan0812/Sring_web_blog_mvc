@@ -1,5 +1,5 @@
 
-/*
+
 package com.truonghan.backend.test;
 import static org.junit.Assert.*;
 
@@ -134,20 +134,22 @@ public class BookServiceTest {
 		List<User> users= new ArrayList<User>();
 		
 		Role role_admin = new Role();
-		role_admin.setName("admin");
+		role_admin.setName("ROLE_ADMIN");
 		
 		Role role_user = new Role();
-		role_user.setName("user");
+		role_user.setName("ROLE_USER");
 		
 		roles.add(role_admin);
 		roles.add(role_user);
 		
-		users.add(user_user);
-		users.add(user_admin);
+		//users.add(user_user);
+		//users.add(user_admin);
 		
 		//role_user.setUsers(users);
 		//roleService.save(role_user);
-		user_admin.setRoles(roles);
+		user_admin.getRoles().add(role_admin);
+		user_admin.getRoles().add(role_user);
+		//user_admin.setRoles(roles);
 		user_admin.setBlogs(blogs);
 		userService.save(user_admin);
 		
@@ -157,26 +159,26 @@ public class BookServiceTest {
 		//	System.out.println(role.getName());
 	//	}
 		
-		em.refresh(user_admin);
-		List<Blog> blogsDB = userService.findOne(user_admin.getId()).getBlogs();
-		assertEquals(user_admin.getBlogs().size(), blogsDB.size());
-		for (Blog role : blogsDB) {
-			System.out.println("printing role name");
-			System.out.println(role.getName());
-		}
+//		em.refresh(user_admin);
+//		List<Blog> blogsDB = userService.findOne(user_admin.getId()).getBlogs();
+//		assertEquals(user_admin.getBlogs().size(), blogsDB.size());
+//		for (Blog role : blogsDB) {
+//			System.out.println("printing role name");
+//			System.out.println(role.getName());
+//		}
 		
 		
-		em.refresh(blog);
-		Blog dbBlog = blogService.findOne(blog.getId());
-		
-		List<Item> itemsDB = dbBlog.getItems();
-		assertEquals(itemsDB.size(), blog.getItems().size());
-		for (Item item : itemsDB) {
-			System.out.println("printing item name");
-			System.out.println(item.getLink());
-		}
+//		em.refresh(blog);
+//		Blog dbBlog = blogService.findOne(blog.getId());
+//		
+//		List<Item> itemsDB = dbBlog.getItems();
+//		assertEquals(itemsDB.size(), blog.getItems().size());
+//		for (Item item : itemsDB) {
+//			System.out.println("printing item name");
+//			System.out.println(item.getLink());
+//		}
 		
 	}
 	
 }
-*/
+

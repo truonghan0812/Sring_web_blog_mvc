@@ -2,6 +2,7 @@
 <%@ taglib uri="http://tiles.apache.org/tags-tiles" prefix="tiles"%>
 <%@ taglib uri="http://www.springframework.org/tags" prefix="sp" %>
 <%@ taglib uri="http://tiles.apache.org/tags-tiles-extras" prefix="tilesx" %>
+<%@ taglib uri="http://www.springframework.org/security/tags"  prefix="spsecure"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -30,10 +31,16 @@
         <div id="navbar" class="navbar-collapse collapse">
           <ul class="nav navbar-nav">
             <li class="${current == 'index' ? 'active' : '' }"><a href="<sp:url value='/'/>">Home</a></li>
+            <spsecure:authorize  access="hasRole('ROLE_ADMIN')">
             <li class="${current == 'users' ? 'active' : '' }"><a href="<sp:url value='/users.html'/>">Users</a></li>
+            </spsecure:authorize>
             <li class="${current == 'register' ? 'active' : '' }"><a href="<sp:url value='/register.html'/>">Register</a></li>
+            <spsecure:authorize access="! isAuthenticated()">
             <li class="${current == 'login' ? 'active' : '' }"><a href="<sp:url value='/login.html'/>">Log In</a></li>
+            </spsecure:authorize>
+             <spsecure:authorize access="isAuthenticated()">
             <li><a href="<sp:url value='/logout'/>">Log Out</a></li>
+            </spsecure:authorize>
             <li><a href="#contact">Contact</a></li>
            </ul>
         </div><!--/.nav-collapse -->

@@ -25,7 +25,7 @@
 		<entity-name>com.truonghan.backend.domain.Item</entity-name>
 		<entity-width>120</entity-width>
 		<entity-height>206</entity-height>
-		<entity-X-Coordinate>20</entity-X-Coordinate>
+		<entity-X-Coordinate>119</entity-X-Coordinate>
 		<entity-Y-Coordinate>300</entity-Y-Coordinate>
 		<primary-collapsed>false</primary-collapsed>
 		<relation-collapsed>false</relation-collapsed>
@@ -36,8 +36,8 @@
 		<entity-name>com.truonghan.backend.domain.Blog</entity-name>
 		<entity-width>120</entity-width>
 		<entity-height>186</entity-height>
-		<entity-X-Coordinate>470</entity-X-Coordinate>
-		<entity-Y-Coordinate>192</entity-Y-Coordinate>
+		<entity-X-Coordinate>650</entity-X-Coordinate>
+		<entity-Y-Coordinate>264</entity-Y-Coordinate>
 		<primary-collapsed>false</primary-collapsed>
 		<relation-collapsed>false</relation-collapsed>
 		<basic-collapsed>false</basic-collapsed>
