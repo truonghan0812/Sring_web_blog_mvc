@@ -1,5 +1,5 @@
-
 /*
+
 package com.truonghan.backend.test;
 import static org.junit.Assert.*;
 
@@ -18,15 +18,12 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.test.context.transaction.TransactionConfiguration;
 
 import com.truonghan.backend.domain.Blog;
-import com.truonghan.backend.domain.Book;
 import com.truonghan.backend.domain.Item;
 import com.truonghan.backend.domain.Role;
 import com.truonghan.backend.domain.User;
 import com.truonghan.backend.services.BlogService;
-import com.truonghan.backend.services.BookService;
 import com.truonghan.backend.services.ItemService;
 import com.truonghan.backend.services.RoleService;
-import com.truonghan.backend.services.RoleServiceImpl;
 import com.truonghan.backend.services.UserService;
 
 @RunWith(SpringJUnit4ClassRunner.class)
@@ -96,10 +93,10 @@ public class BookServiceTest {
 	public void insertUerTest(){
 			User user_admin = new User();
 			user_admin.setName("admin");
-			
+			user_admin.setPassword("admin");
 			User user_user = new User();
 			user_user.setName("user");
-			
+			user_user.setPassword("user");
 		//Insert blog and blog item
 			
 			Blog blog = new Blog();
@@ -147,9 +144,7 @@ public class BookServiceTest {
 		
 		//role_user.setUsers(users);
 		//roleService.save(role_user);
-		user_admin.getRoles().add(role_admin);
-		user_admin.getRoles().add(role_user);
-		//user_admin.setRoles(roles);
+		user_admin.setRoles(roles);
 		user_admin.setBlogs(blogs);
 		userService.save(user_admin);
 		

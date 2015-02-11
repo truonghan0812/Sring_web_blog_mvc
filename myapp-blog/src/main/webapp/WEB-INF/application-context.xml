@@ -11,4 +11,9 @@
 <!-- Tell Spring to load another configuration file -->
 <import resource="classpath:META-INF/backend-context.xml"/>
 <import resource="spring-security.xml"/>
+
+<!-- Database -->
+
+
+
 </beans>
