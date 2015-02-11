@@ -1,0 +1,24 @@
+<persistence xmlns="http://java.sun.com/xml/ns/persistence"	version="1.0">
+
+	<persistence-unit name="myUnit" transaction-type="RESOURCE_LOCAL">
+		<provider>org.hibernate.ejb.HibernatePersistence</provider>
+		<class>com.truonghan.backend.domain.Blog</class>
+		<class>com.truonghan.backend.domain.Item</class>
+		<class>com.truonghan.backend.domain.Role</class>
+		<class>com.truonghan.backend.domain.User</class>
+		<class>com.truonghan.backend.domain.Book</class>
+		<properties>
+			<property name="hibernate.dialect" value="org.hibernate.dialect.MySQL5Dialect" />
+			<property name="hibernate.hbm2ddl.auto" value="update" />
+			<property name="hibernate.show_sql" value="true"/>
+		</properties>
+	</persistence-unit>
+	<persistence-unit name="H2DB_myUnit" transaction-type="RESOURCE_LOCAL">
+		<provider>org.hibernate.ejb.HibernatePersistence</provider>
+		<properties>
+			<property name="hibernate.dialect" value="org.hibernate.dialect.H2Dialect" />
+			<property name="hibernate.hbm2ddl.auto" value="create-drop" />
+			<property name="hibernate.show_sql" value="true"/>
+		</properties>
+	</persistence-unit>
+</persistence>
