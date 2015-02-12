@@ -38,6 +38,9 @@
             <spsecure:authorize access="! isAuthenticated()">
             <li class="${current == 'login' ? 'active' : '' }"><a href="<sp:url value='/login.html'/>">Log In</a></li>
             </spsecure:authorize>
+            <spsecure:authorize access="isAuthenticated()">
+           		 <li class="${current == 'user-detail' ? 'active' : '' }"><a href="<sp:url value='/account.html'/>">My Account</a></li>
+            </spsecure:authorize>
              <spsecure:authorize access="isAuthenticated()">
             <li><a href="<sp:url value='/logout'/>">Log Out</a></li>
             </spsecure:authorize>

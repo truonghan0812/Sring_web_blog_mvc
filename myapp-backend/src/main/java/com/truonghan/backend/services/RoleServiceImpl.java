@@ -9,8 +9,10 @@ import javax.persistence.TypedQuery;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.mysema.query.types.expr.BooleanExpression;
 import com.truonghan.backend.daos.RoleDao;
 import com.truonghan.backend.daos.UserDao;
+import com.truonghan.backend.domain.QRole;
 import com.truonghan.backend.domain.Role;
 import com.truonghan.backend.domain.User;
 
@@ -38,6 +40,13 @@ public class RoleServiceImpl implements RoleService {
 	@Override
 	public Role findOne(int ID) {
 		return roledao.findOne(ID);
+	}
+
+	@Override
+	public Role findByName(String name) {
+		QRole role = QRole.role;
+		BooleanExpression hasName = role.name.eq(name);
+		return roledao.findOne(hasName);
 	}
 
 }

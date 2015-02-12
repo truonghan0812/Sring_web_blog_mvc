@@ -9,4 +9,5 @@ public interface RoleService {
 	Role save (Role entity);
 	List<Role> findAll ();
 	Role findOne (int ID);
+	Role findByName (String name);
 }

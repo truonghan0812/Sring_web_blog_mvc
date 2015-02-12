@@ -3,6 +3,9 @@
 	pageEncoding="UTF-8"%>
 <%@ include file="../layout/taglib.jsp"%>
 <br>
+<c:if test="${param.success}">
+	<div  class="alert alert-success">Register successfully!</div><br>
+</c:if>
 <spform:form class="form-horizontal" commandName="user">
 	<div class="form-group">
 		<label for="namelabel" class="col-sm-2 control-label">User
@@ -18,9 +21,9 @@
 		</div>
 	</div>
 	<div class="form-group">
-		<label for="emaillabel" class="col-sm-2 control-label">Password:</label>
+		<label for="passwordlabel" class="col-sm-2 control-label">Password:</label>
 		<div class="col-sm-10">
-			<spform:password class="form-control" path="email"></spform:password>
+			<spform:password class="form-control" path="password"></spform:password>
 		</div>
 	</div>
 	<div class="form-group">

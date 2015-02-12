@@ -29,6 +29,8 @@ public class User {
 	
 	private String password;
 	
+	private boolean enabled;
+	
 	@ManyToMany(cascade=CascadeType.ALL)
 	@JoinTable(
 			name="permission",
@@ -45,6 +47,20 @@ public class User {
 	public List<Blog> getBlogs() {
 		return blogs;
 	}
+
+	
+	
+	public boolean isEnable() {
+		return enabled;
+	}
+
+
+
+	public void setEnabled(boolean enabled) {
+		this.enabled = enabled;
+	}
+
+
 
 	public void setBlogs(List<Blog> blogs) {
 		this.blogs = blogs;

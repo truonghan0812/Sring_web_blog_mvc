@@ -8,6 +8,8 @@ import javax.persistence.TypedQuery;
 import javax.transaction.Transactional;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Sort.Direction;
 import org.springframework.stereotype.Service;
 
 import com.mysema.query.types.expr.BooleanExpression;
@@ -44,6 +46,13 @@ public class ItemServiceImpl implements ItemService {
 	@Override
 	public void delete(Item entity) {
 		itemdao.delete(entity);
+	}
+
+	@Override
+	public List<Item> findItemByBlog(Blog blog) {
+		QItem item = QItem.item;
+		BooleanExpression isBeLongToBlog = item.blog.eq(blog);
+		return (List<Item>) itemdao.findAll(isBeLongToBlog,new PageRequest(0, 10, Direction.DESC, "publishedDate")).getContent();
 	}
 
 	

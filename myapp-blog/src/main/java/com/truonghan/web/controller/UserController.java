@@ -1,10 +1,10 @@
 package com.truonghan.web.controller;
 
-import org.springframework.beans.factory.annotation.Autowire;
+import java.security.Principal;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -19,7 +19,7 @@ public class UserController {
 	@Autowired
 	private UserService userService;
 	
-	//This create a user model for first request get method
+	//This create a user model for first request get method in views
 	@ModelAttribute("user")
 	public User getUser(){
 		return new User();
@@ -48,16 +48,16 @@ public class UserController {
 	
 	@RequestMapping(value="/register", method=RequestMethod.POST)
 	public String saveUser(@ModelAttribute("user") User user){
-		
-//		if(rs.hasErrors()){
-//			System.out.println("-------Binding has errors---------");
-//			return "user-register";
-//		}
-//		else{
 			System.out.println("-------Saving user---------");
 			userService.save(user);
-			return "redirect:/users.html";
-//		}
+			return "redirect:/register.html?success=true";
 		
+	}
+	@RequestMapping(value="/account")
+	public String account( Model model, Principal principal){
+		String userName = principal.getName();
+		Integer userId = userService.findByName(userName).getId();
+		model.addAttribute("user",userService.findOneWithBlogs(userId));
+		return "user-detail";
 	}
 }

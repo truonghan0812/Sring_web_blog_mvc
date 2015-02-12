@@ -10,4 +10,5 @@ public interface UserService {
 	List<User> findAll();
 	User findOne(int ID);
 	User findOneWithBlogs(int user_id);
+	User findByName(String name);
 }

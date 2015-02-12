@@ -48,6 +48,13 @@ public class BlogServiceImpl implements BlogService {
 		
 	}
 
+	@Override
+	public List<Blog> findBlogsByUser(User user) {
+		QBlog Qblog = QBlog.blog;
+		BooleanExpression isBeLongToUser = Qblog.user.eq(user);
+		return (List<Blog>) blogdao.findAll(isBeLongToUser);
+	}
+
 	
 
 }

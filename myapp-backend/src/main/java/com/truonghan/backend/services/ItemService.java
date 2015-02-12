@@ -11,4 +11,5 @@ public interface ItemService {
 	List<Item> findAll ();
 	Item findOne (int ID);
 	void delete(Item entity);
+	List<Item> findItemByBlog(Blog blog);
 }
