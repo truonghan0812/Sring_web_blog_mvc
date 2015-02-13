@@ -21,6 +21,8 @@ public class BlogServiceImpl implements BlogService {
 
 	@Autowired
 	private BlogDao blogdao;
+	@Autowired
+	private UserService userService;
 	
 	@PersistenceContext
 	EntityManager em;
@@ -53,6 +55,17 @@ public class BlogServiceImpl implements BlogService {
 		QBlog Qblog = QBlog.blog;
 		BooleanExpression isBeLongToUser = Qblog.user.eq(user);
 		return (List<Blog>) blogdao.findAll(isBeLongToUser);
+	}
+
+	@Override
+	@Transactional
+	public void saveByUser(Blog blog, String userName) {
+		User user = userService.findByName(userName);
+		blog.setUser(user);
+		if(user!=null){
+			em.merge(user);
+		}
+		blogdao.save(blog);
 	}
 
 	

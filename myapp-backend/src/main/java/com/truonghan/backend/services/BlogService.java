@@ -12,4 +12,5 @@ public interface BlogService {
 	Blog findOne(int ID);
 	void delete(Blog entity);
 	List<Blog> findBlogsByUser(User user);
+	void saveByUser(Blog blog, String userName);
 }
