@@ -62,9 +62,9 @@ public class BlogServiceImpl implements BlogService {
 	public void saveByUser(Blog blog, String userName) {
 		User user = userService.findByName(userName);
 		blog.setUser(user);
-		if(user!=null){
-			em.merge(user);
-		}
+//		if(user!=null){
+//			em.merge(user);
+//		}
 		blogdao.save(blog);
 	}
 
