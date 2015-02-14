@@ -45,6 +45,7 @@ public class BlogServiceImpl implements BlogService {
 	}
 
 	@Override
+	@Transactional
 	public void delete(Blog entity) {
 		blogdao.delete(entity);
 		
