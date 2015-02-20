@@ -18,6 +18,7 @@
 <!-- Latest compiled and minified JavaScript -->
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+<script type="text/javascript" src="http://ajax.aspnetcdn.com/ajax/jquery.validate/1.13.1/jquery.validate.min.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
 
 </head>
@@ -42,7 +43,7 @@
             <li class="${current == 'login' ? 'active' : '' }"><a href="<sp:url value='/login.html'/>">Log In</a></li>
             </spsecure:authorize>
             <spsecure:authorize access="isAuthenticated()">
-           		 <li class="${current == 'user-detail' ? 'active' : '' }"><a href="<sp:url value='/account.html'/>">My Account</a></li>
+           		 <li class="${current == 'user-account' ? 'active' : '' }"><a href="<sp:url value='/account.html'/>">My Account</a></li>
             </spsecure:authorize>
              <spsecure:authorize access="isAuthenticated()">
             <li><a href="<sp:url value='/logout'/>">Log Out</a></li>

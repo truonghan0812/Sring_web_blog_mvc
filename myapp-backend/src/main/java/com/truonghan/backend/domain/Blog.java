@@ -7,6 +7,7 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
+import javax.validation.constraints.Size;
 
 import java.util.List;
 
@@ -17,8 +18,9 @@ public class Blog {
 	@GeneratedValue
 	private Integer id;
 	
+	@Size(min=3,message="Blog name must be at least 3 characters!")
 	private String name;
-	
+	 
 	private String url;
 	
 	@ManyToOne
